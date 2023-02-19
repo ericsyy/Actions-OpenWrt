@@ -2,7 +2,7 @@
 
 / {
 	compatible = "360,p2", "mediatek,mt7628an-soc";
-	model = "360 p2";
+	model = "360 P2";
 
 	leds {
 		compatible = "gpio-leds";
