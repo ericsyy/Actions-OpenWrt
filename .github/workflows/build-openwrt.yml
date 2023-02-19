@@ -24,6 +24,11 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
+  
+  TARGET_FILE1: target/02_network
+  TARGET_FILE2: target/mt7628an_360_p2.dts
+  TARGET_FILE3: target/mt76x8.mk
+  
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -65,6 +70,15 @@ jobs:
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: Load custom target
+      run: |
+        [ -e $TARGET_FILE1 ] && mv $TARGET_FILE1 openwrt/target/linux/ramips/mt76x8/base-files/etc/board.d/02_network
+        [ -e $TARGET_FILE2 ] && mv $TARGET_FILE2 openwrt/target/linux/ramips/dts/mt7628an_hiwifi_hc5861b.dts
+        [ -e $TARGET_FILE3 ] && mv $TARGET_FILE3 openwrt/target/linux/ramips/image/mt76x8.mk
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
