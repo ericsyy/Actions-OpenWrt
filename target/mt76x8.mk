@@ -206,7 +206,7 @@ TARGET_DEVICES += hiwifi_hc5861b
 define Device/360_p2
   IMAGE_SIZE := 15808k
   DEVICE_VENDOR := 360
-  DEVICE_MODEL := p2
+  DEVICE_MODEL := P2
   DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci
 endef
 TARGET_DEVICES += 360_p2
